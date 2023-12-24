@@ -27,3 +27,17 @@ Ensure you have the following prerequisites installed:
 
    ```bash
    git clone https://github.com/eshwanthkartitr/file-transfer-including-Merkle-tree.git
+
+## Screenshots
+
+### Client's UI Page in Flask
+
+![Client's UI Page in Flask](./client-ui.png)
+
+### Output After Server Operation
+
+![Output After Server Operation](./op-after-se.png)
+
+### Output Before Server Operation
+
+![Output Before Server Operation](./op-bef-se.png)
