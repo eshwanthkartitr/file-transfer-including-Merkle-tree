@@ -32,12 +32,12 @@ Ensure you have the following prerequisites installed:
 
 ### Client's UI Page in Flask
 
-![Client's UI Page in Flask](./client-ui.png)
+![client-ui](https://github.com/eshwanthkartitr/file-transfer-including-Merkle-tree/assets/111058542/6c65defe-b020-498c-8e08-75e02b44a46a)
 
 ### Output After Server Operation
 
-![Output After Server Operation](op-after-se.png)
+![op-after-se](https://github.com/eshwanthkartitr/file-transfer-including-Merkle-tree/assets/111058542/cb42ad88-c08c-4dd9-ba17-99fa1ee08945)
 
 ### Output Before Server Operation
 
-![Output Before Server Operation](op-bef-se.png)
+![op-bef-se](https://github.com/eshwanthkartitr/file-transfer-including-Merkle-tree/assets/111058542/342577b7-6403-4d68-8692-2788cd509db1)
