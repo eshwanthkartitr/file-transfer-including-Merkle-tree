@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="server_status">Start Server</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: grey;
+        color: red;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+
+      #start-server-btn {
+        background-color: #4caf50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+
+      #start-server-btn:hover {
+        background-color: #367c39; /* A darker shade of green for contrast */
+        color: #d4edda; /* A light green that stands out against the dark background */
+      }
+
+      .loading {
+        pointer-events: none;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="start-server-btn">Start Server</button>
+    <script>
+      var button = document.getElementById("start-server-btn");
+      button.addEventListener("click", function () {
+        button.classList.add("loading");
+        button.textContent = "Working...";
+
+        fetch("/start-server", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.text())
+          .then((text) => {
+            alert(text);
+
+            if (text.includes("Server started!")) {
+              var clients = prompt("How many clients would connect?");
+              if (clients !== null) {
+                button.textContent = "Server accepting clients 💪🏻"
+                return fetch("/set-clients", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ numClients: clients }),
+                });
+              }
+            } else {
+              throw new Error("Server did not start correctly");
+            }
+          })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("Error in response from /set-clients");
+            }
+          })
+          .then((data) => {
+            alert("Number of clients to connect: " + data.numClients);
+            button.classList.remove("loading");
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("⚠️⚠️⚠️⚠️");
+            button.classList.remove("loading");
+            button.textContent = "Server already running"; // Reset button text if there's an error
+          });
+      });
+    </script>
+  </body>
+</html>
