@@ -36,8 +36,8 @@ Ensure you have the following prerequisites installed:
 
 ### Output After Server Operation
 
-![Output After Server Operation](./op-after-se.png)
+![Output After Server Operation](op-after-se.png)
 
 ### Output Before Server Operation
 
-![Output Before Server Operation](./op-bef-se.png)
+![Output Before Server Operation](op-bef-se.png)
